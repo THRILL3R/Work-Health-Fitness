@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Dashboard</title>
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="logo.png" alt="Logo" class="logo">
+      <span>Health Work Fitness</span>
+    </div>
+    <ul class="nav-menu">
+      <li>CULT</li>
+      <li class="active">HOME</li>
+      <li>STORE</li>
+      <li>SPORTS</li>
+    </ul>
+    <div class="nav-right">
+      <button class="get-app">GET APP</button>
+      <div class="profile-dropdown">
+        <img src="user.png" alt="Profile" class="profile-icon">
+        <i class="ri-arrow-down-s-line"></i>
+      </div>
+      <i class="ri-shopping-cart-2-line cart-icon"></i>
+    </div>
+  </nav>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-profile">
+      <img src="user.png" alt="User" class="sidebar-avatar">
+      <div class="sidebar-name">User</div>
+      <a href="#" class="view-profile">View Profile</a>
+    </div>
+    <ul class="sidebar-menu">
+      <li><i class="ri-file-list-3-line"></i> Orders</li>
+      <li><i class="ri-heart-pulse-line"></i> Medical Records</li>
+      <li><i class="ri-medal-line"></i> Active Packs and Subscriptions</li>
+      <li><i class="ri-gift-line"></i> Redeem Voucher</li>
+      <li><i class="ri-user-settings-line"></i> Account</li>
+      <li><i class="ri-customer-service-2-line"></i> Support</li>
+      <li class="logout"><i class="ri-logout-box-r-line"></i> Logout</li>
+    </ul>
+  </aside>
+  <!-- Main Profile Section -->
+  <main class="main-content">
+    <h2 class="profile-title">PROFILE</h2>
+    <div class="profile-container">
+      <section class="profile-form-section">
+        <form class="profile-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" value="Samruddhi Vadgave">
+          <label for="gender">Gender</label>
+          <select id="gender">
+            <option>Female</option>
+            <option>Male</option>
+            <option>Other</option>
+          </select>
+          <label for="email">Email</label>
+          <input type="email" id="email" value="samruddhi@email.com">
+          <a href="member.html"> <button type="submit"  class="save-button" style="display: none;">Save Changes</button></a>
+        </form>
+      </section>
+      <section class="profile-info-section">
+        <div class="profile-image-edit">
+          <img src="user.png" alt="Profile" class="profile-avatar">
+          <span class="edit-overlay"><i class="ri-pencil-line"></i></span>
+        </div>
+        <div class="profile-info-list">
+          <div><strong>Phone:</strong> +91 9876543210</div>
+          <div><strong>Date of Birth:</strong> 01/01/2000</div>
+          <div><strong>Work Email:</strong> <span>add@email.com</span> <a href="#" class="add-link">Add</a></div>
+        </div>
+      </section>
+    </div>
+    <script>
+      const form = document.querySelector('.profile-form');
+      const saveBtn = document.querySelector('.save-button');
+    
+      let originalValues = {};
+    
+      // Store initial values
+      const inputs = form.querySelectorAll('input, select');
+      inputs.forEach(input => {
+        originalValues[input.name || input.id] = input.value;
+      });
+    
+      // Show button on any change
+      inputs.forEach(input => {
+        input.addEventListener('input', () => {
+          const changed = Array.from(inputs).some(i => {
+            const key = i.name || i.id;
+            return i.value !== originalValues[key];
+          });
+          saveBtn.style.display = changed ? 'inline-block' : 'none';
+        });
+      });
+    </script>
+     
+  </main>
+</body>
+</html>
